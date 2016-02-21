@@ -1,0 +1,3 @@
+[apic.aci.ceclab.info]
+	type apic
+	url https://user:password@apic.aci.ceclab.info/

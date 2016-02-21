@@ -1,0 +1,5 @@
+.vagrant
+acirb
+puppet-aci
+private/device.conf
+environment_production/modules/*
