@@ -2,4 +2,4 @@
 acirb
 puppet-aci
 private/device.conf
-environment_production/modules/*
+environment_production/modules/aci
