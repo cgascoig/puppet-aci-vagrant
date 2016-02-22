@@ -23,3 +23,8 @@ along with its requirements
  - SSH into the vm: `vagrant ssh`
  - Finally run the puppet device framework to configure ACI as per the manifest: `puppet device --debug --trace --server localhost --deviceconfig ~/private/device.conf`
  
+# Requirements
+
+Tested with:
+ - Vagrant 1.7.4
+ - VirtualBox 5.0.10
