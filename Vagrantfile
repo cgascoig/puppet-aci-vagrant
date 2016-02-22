@@ -1,5 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+puppet_aci_url = 'https://github.com/cgascoig/puppet-aci'
+
+unless Dir.exists?('puppet-aci')
+  print "'puppet-aci' does not exist, cloning from "+puppet_aci_url+"\n"
+  system('git', 'clone', puppet_aci_url)
+else
+  print "'puppet-aci' already exists, not cloning\n"
+end
+
+
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -47,7 +57,6 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "./puppet-aci", "/home/vagrant/puppet-aci"
-  config.vm.synced_folder "./acirb", "/home/vagrant/acirb"
   config.vm.synced_folder "./private", "/home/vagrant/private"
   config.vm.synced_folder "./environment_production", "/etc/puppetlabs/code/environments/production"
 
@@ -95,6 +104,6 @@ Vagrant.configure(2) do |config|
     (cd puppet-aci; sudo /opt/puppetlabs/bin/puppet module install -f pkg/puppet-aci-latest.tar.gz)
 
 
-    echo 'provisioning complete, next run "puppet device --debug --trace --server localhost --deviceconfig ~/private/device.conf" after "vagrant ssh"'
+    echo -e '\n\n----------------------------\nProvisioning complete, next steps:\n  create private/device.conf (see private/device.conf.sample)\n  run "vagrant ssh"\n  run "puppet device --debug --trace --server localhost --deviceconfig ~/private/device.conf"'
   SHELL
 end
